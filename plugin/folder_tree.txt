@@ -1,0 +1,26 @@
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\.gitignore
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\build
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\datasheets-for-gutenberg.php
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\folder_tree.json
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\folder_tree.txt
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\includes
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\npm run build.bat
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\package-lock.json
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\package.json
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\includes\register-blocks.php
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\datasheet
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\multipage
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\page
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\datasheet\block.json
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\datasheet\edit.js
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\datasheet\editor.css
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\datasheet\index.js
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\datasheet\style.css
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\multipage\block.json
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\multipage\index.js
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\multipage\render.php
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\page\block.json
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\page\index.js
+C:\Users\toman\Documents\GitHub\datasheets-for-gutenberg\plugin\src\blocks\page\style.css
