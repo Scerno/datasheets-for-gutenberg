@@ -81,7 +81,7 @@ const DatasheetEdit = ( { attributes, setAttributes } ) => {
 			width:      `${ meta.width  ?? 0 }${ meta.width_unit  ?? unit }`,
 			height:     `${ meta.height ?? 0 }${ meta.height_unit ?? unit }`,
 			padding:    buildPadding( meta, unit ),
-			boxSizing:  'content-box',
+			boxSizing:  'border-box',
 			};
 	/*
         let style;

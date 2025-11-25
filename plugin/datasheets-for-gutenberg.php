@@ -1,22 +1,49 @@
 <?php
 /**
- * Plugin Name: Datasheets for Gutenberg
- * Description: Gutenberg blocks for the Wizzy Datasheets core plugin.
- * Version: 0.1.0
- * Requires Plugins: wizzy-datasheets
+ * Plugin Name:       Datasheets For Gutenberg
+ * Description:       Gutenberg blocks for building Datasheet templates.
+ * Version:           1.0.0
+ * Author:            Scerno Ltd.
+ * Author URI:        https://scerno.com
+ * Text Domain:       datasheets-for-gutenberg
+ * Domain Path:       /languages
+ * License:           GPL-2.0-or-later
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.html
+ * Requires Plugins: datasheets
  * Text Domain: datasheets-blocks
+ *
+ * @package Datasheets_For_Gutenberg
  */
 
-defined('ABSPATH') || exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-add_action('plugins_loaded', function () {
-    if ( ! defined('WIZZY_DATASHEETS_VERSION') ) {
-        add_action('admin_notices', function () {
-            echo '<div class="notice notice-error"><p>'
-               . esc_html__('Wizzy Datasheets – Blocks requires the Wizzy Datasheets core plugin.', 'datasheets-blocks')
-               . '</p></div>';
-        });
-        return;
-    }
-    require __DIR__ . '/includes/register-blocks.php';
-});
+// Plugin constants.
+define( 'DATASHEETS_GB_VERSION', '1.0.0' );
+define( 'DATASHEETS_GB_DIR', plugin_dir_path( __FILE__ ) );
+define( 'DATASHEETS_GB_URL', plugin_dir_url( __FILE__ ) );
+
+// Require block registration file.
+require_once DATASHEETS_GB_DIR . 'includes/register-blocks.php';
+
+/**
+ * Initialize plugin.
+ */
+function run_datasheets_for_gutenberg() {
+	// Ensure the base plugin "Datasheets" is active.
+	if ( ! class_exists( 'Datasheets' ) ) {
+		add_action( 'admin_notices', function() {
+			echo '<div class="notice notice-error"><p>' .
+			     esc_html__( 'Datasheets For Gutenberg requires the Datasheets plugin to be active.', 'datasheets-for-gutenberg' ) .
+			     '</p></div>';
+		});
+		return;
+	}
+
+	// Register blocks.
+	add_action( 'init', 'datasheets_for_gutenberg_register_blocks' );
+}
+add_action( 'plugins_loaded', 'run_datasheets_for_gutenberg' );
+
+

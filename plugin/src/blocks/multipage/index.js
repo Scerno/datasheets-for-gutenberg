@@ -53,12 +53,14 @@ function MultipageEdit( { attributes, setAttributes, clientId } ) {
 			padding: meta.margin_equal
 				? `${ meta.margin }${ unit }`
 				: `${ meta.margin_top }${ unit } ${ meta.margin_right }${ unit } ${ meta.margin_bottom }${ unit } ${ meta.margin_left }${ unit }`,
-			boxSizing: 'content-box',
+			boxSizing: 'border-box',
+			background: 'violet',
 		};
 		const newContainerStyle  = {
 			width:    newStyle.width,   // exact sheet width
 			maxWidth: '100%',           // never exceed editor column
 			padding: '0',
+			background: 'green',
 		};
 		setAttributes( { styleObj: newStyle, containerStyle: newContainerStyle  } );
 	}, [ layoutId, layouts ] );
