@@ -13,10 +13,7 @@ $field_name   = isset( $attributes['fieldName'] ) ? sanitize_text_field( $attrib
 $fallback_url = isset( $attributes['fallbackUrl'] ) ? esc_url_raw( $attributes['fallbackUrl'] ) : '';
 $fallback_alt = isset( $attributes['fallbackAlt'] ) ? sanitize_text_field( $attributes['fallbackAlt'] ) : '';
 
-$value = null;
-if ( $field_name && function_exists( 'get_field' ) ) {
-	$value = get_field( $field_name );
-}
+$value = $field_name ? datasheets_for_gutenberg_get_field_value( $field_name ) : null;
 
 $image_html = '';
 

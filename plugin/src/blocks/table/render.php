@@ -22,10 +22,7 @@ $rows    = array_map(
 	$rows
 );
 
-$value = null;
-if ( $field_name && function_exists( 'get_field' ) ) {
-	$value = get_field( $field_name );
-}
+$value = $field_name ? datasheets_for_gutenberg_get_field_value( $field_name ) : null;
 
 if ( is_array( $value ) && isset( $value['headers'], $value['rows'] ) ) {
 	$headers = array_map( 'sanitize_text_field', (array) $value['headers'] );

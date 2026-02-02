@@ -12,10 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $field_name   = isset( $attributes['fieldName'] ) ? sanitize_text_field( $attributes['fieldName'] ) : '';
 $fallback_text = isset( $attributes['fallbackText'] ) ? $attributes['fallbackText'] : '';
 
-$value = '';
-if ( $field_name && function_exists( 'get_field' ) ) {
-	$value = get_field( $field_name );
-}
+$value = $field_name ? datasheets_for_gutenberg_get_field_value( $field_name ) : '';
 
 if ( is_array( $value ) ) {
 	$value = implode( ', ', array_map( 'sanitize_text_field', $value ) );

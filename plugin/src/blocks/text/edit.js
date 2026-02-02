@@ -1,13 +1,15 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, TextareaControl, TextControl } from '@wordpress/components';
+import { PanelBody, SelectControl, TextareaControl } from '@wordpress/components';
 import metadata from './block.json';
+import useFieldOptions from '../shared/use-field-options';
 
 import './editor.css';
 
 const TextEdit = ( { attributes, setAttributes } ) => {
 	const { fieldName, fallbackText } = attributes;
+	const { options, isLoading, postType } = useFieldOptions();
 	const blockProps = useBlockProps( {
 		className: 'datasheets-text',
 	} );
@@ -16,12 +18,15 @@ const TextEdit = ( { attributes, setAttributes } ) => {
 		<>
 			<InspectorControls>
 				<PanelBody title={ __( 'Field settings', 'datasheets' ) } initialOpen={ true }>
-					<TextControl
-						label={ __( 'ACF field name', 'datasheets' ) }
-						help={ __( 'Match the field name used on your selected post type.', 'datasheets' ) }
+					<SelectControl
+						label={ __( 'Field source', 'datasheets' ) }
+						help={ postType
+							? __( 'Fields are loaded from the Datasheets post type setting.', 'datasheets' )
+							: __( 'Select a field from the Datasheets post type.', 'datasheets' ) }
 						value={ fieldName }
+						options={ options }
 						onChange={ ( value ) => setAttributes( { fieldName: value } ) }
-						placeholder={ __( 'e.g. short_description', 'datasheets' ) }
+						disabled={ isLoading }
 					/>
 					<TextareaControl
 						label={ __( 'Fallback text', 'datasheets' ) }
@@ -34,8 +39,8 @@ const TextEdit = ( { attributes, setAttributes } ) => {
 			<div { ...blockProps }>
 				<span className="datasheets-text__label">
 					{ fieldName
-						? __( 'ACF field:', 'datasheets' )
-						: __( 'Set an ACF field name in the sidebar.', 'datasheets' ) }
+						? __( 'Field:', 'datasheets' )
+						: __( 'Set a field in the sidebar.', 'datasheets' ) }
 				</span>
 				<p className="datasheets-text__preview">
 					{ fieldName ? `${ fieldName }` : fallbackText }

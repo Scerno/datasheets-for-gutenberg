@@ -1,13 +1,15 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, TextControl } from '@wordpress/components';
+import { PanelBody, SelectControl, TextControl } from '@wordpress/components';
 import metadata from './block.json';
+import useFieldOptions from '../shared/use-field-options';
 
 import './editor.css';
 
 const ImageEdit = ( { attributes, setAttributes } ) => {
 	const { fieldName, fallbackUrl, fallbackAlt } = attributes;
+	const { options, isLoading, postType } = useFieldOptions();
 	const blockProps = useBlockProps( {
 		className: 'datasheets-image',
 	} );
@@ -16,11 +18,15 @@ const ImageEdit = ( { attributes, setAttributes } ) => {
 		<>
 			<InspectorControls>
 				<PanelBody title={ __( 'Field settings', 'datasheets' ) } initialOpen={ true }>
-					<TextControl
-						label={ __( 'ACF field name', 'datasheets' ) }
+					<SelectControl
+						label={ __( 'Field source', 'datasheets' ) }
+						help={ postType
+							? __( 'Fields are loaded from the Datasheets post type setting.', 'datasheets' )
+							: __( 'Select a field from the Datasheets post type.', 'datasheets' ) }
 						value={ fieldName }
+						options={ options }
 						onChange={ ( value ) => setAttributes( { fieldName: value } ) }
-						placeholder={ __( 'e.g. product_image', 'datasheets' ) }
+						disabled={ isLoading }
 					/>
 					<TextControl
 						label={ __( 'Fallback image URL', 'datasheets' ) }
@@ -38,8 +44,8 @@ const ImageEdit = ( { attributes, setAttributes } ) => {
 			<div { ...blockProps }>
 				<span className="datasheets-image__label">
 					{ fieldName
-						? __( 'ACF field:', 'datasheets' )
-						: __( 'Set an ACF field name in the sidebar.', 'datasheets' ) }
+						? __( 'Field:', 'datasheets' )
+						: __( 'Set a field in the sidebar.', 'datasheets' ) }
 				</span>
 				{ fallbackUrl ? (
 					<img

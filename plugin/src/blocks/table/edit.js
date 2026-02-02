@@ -1,8 +1,9 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, TextareaControl, TextControl } from '@wordpress/components';
+import { PanelBody, SelectControl, TextareaControl, TextControl } from '@wordpress/components';
 import metadata from './block.json';
+import useFieldOptions from '../shared/use-field-options';
 
 import './editor.css';
 
@@ -14,6 +15,7 @@ const parseRows = ( rows ) =>
 
 const TableEdit = ( { attributes, setAttributes } ) => {
 	const { fieldName, fallbackHeaders, fallbackRows } = attributes;
+	const { options, isLoading, postType } = useFieldOptions();
 	const headers = fallbackHeaders.split( ',' ).map( ( header ) => header.trim() );
 	const rows = parseRows( fallbackRows );
 	const blockProps = useBlockProps( {
@@ -24,11 +26,15 @@ const TableEdit = ( { attributes, setAttributes } ) => {
 		<>
 			<InspectorControls>
 				<PanelBody title={ __( 'Field settings', 'datasheets' ) } initialOpen={ true }>
-					<TextControl
-						label={ __( 'ACF field name', 'datasheets' ) }
+					<SelectControl
+						label={ __( 'Field source', 'datasheets' ) }
+						help={ postType
+							? __( 'Fields are loaded from the Datasheets post type setting.', 'datasheets' )
+							: __( 'Select a field from the Datasheets post type.', 'datasheets' ) }
 						value={ fieldName }
+						options={ options }
 						onChange={ ( value ) => setAttributes( { fieldName: value } ) }
-						placeholder={ __( 'e.g. specs_table', 'datasheets' ) }
+						disabled={ isLoading }
 					/>
 					<TextControl
 						label={ __( 'Fallback headers', 'datasheets' ) }
@@ -47,8 +53,8 @@ const TableEdit = ( { attributes, setAttributes } ) => {
 			<div { ...blockProps }>
 				<span className="datasheets-table__label">
 					{ fieldName
-						? __( 'ACF field:', 'datasheets' )
-						: __( 'Set an ACF field name in the sidebar.', 'datasheets' ) }
+						? __( 'Field:', 'datasheets' )
+						: __( 'Set a field in the sidebar.', 'datasheets' ) }
 				</span>
 				<table className="datasheets-table__preview">
 					<thead>
