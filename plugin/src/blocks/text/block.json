@@ -1,0 +1,26 @@
+{
+  "apiVersion": 2,
+  "name": "datasheets/text",
+  "title": "Datasheet Text",
+  "category": "widgets",
+  "icon": "editor-textcolor",
+  "description": "Template-aware text that pulls from an ACF field.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "fieldName": {
+      "type": "string",
+      "default": ""
+    },
+    "fallbackText": {
+      "type": "string",
+      "default": "Sample text"
+    }
+  },
+  "editorScript": "file:./edit.js",
+  "script": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "viewStyle": "file:./style-index.css",
+  "render": "file:./render.php"
+}

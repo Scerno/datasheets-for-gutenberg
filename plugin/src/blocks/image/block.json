@@ -1,0 +1,30 @@
+{
+  "apiVersion": 2,
+  "name": "datasheets/image",
+  "title": "Datasheet Image",
+  "category": "widgets",
+  "icon": "format-image",
+  "description": "Template-aware image that pulls from an ACF field.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "fieldName": {
+      "type": "string",
+      "default": ""
+    },
+    "fallbackUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "fallbackAlt": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./edit.js",
+  "script": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "viewStyle": "file:./style-index.css",
+  "render": "file:./render.php"
+}

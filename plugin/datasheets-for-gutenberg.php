@@ -26,6 +26,7 @@ define( 'DATASHEETS_GB_URL', plugin_dir_url( __FILE__ ) );
 
 // Require block registration file.
 require_once DATASHEETS_GB_DIR . 'includes/register-blocks.php';
+require_once DATASHEETS_GB_DIR . 'includes/field-options.php';
 
 /**
  * Initialize plugin.
@@ -45,5 +46,4 @@ function run_datasheets_for_gutenberg() {
 	add_action( 'init', 'datasheets_for_gutenberg_register_blocks' );
 }
 add_action( 'plugins_loaded', 'run_datasheets_for_gutenberg' );
-
 

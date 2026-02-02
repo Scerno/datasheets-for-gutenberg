@@ -1,0 +1,30 @@
+{
+  "apiVersion": 2,
+  "name": "datasheets/table",
+  "title": "Datasheet Table",
+  "category": "widgets",
+  "icon": "table-col-after",
+  "description": "Template-aware table that pulls from an ACF field.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "fieldName": {
+      "type": "string",
+      "default": ""
+    },
+    "fallbackHeaders": {
+      "type": "string",
+      "default": "Label,Value"
+    },
+    "fallbackRows": {
+      "type": "string",
+      "default": "Weight,2kg\nHeight,120mm"
+    }
+  },
+  "editorScript": "file:./edit.js",
+  "script": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "viewStyle": "file:./style-index.css",
+  "render": "file:./render.php"
+}
