@@ -5,7 +5,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${SCRIPT_DIR}"
 
-PLUGIN_NAME="datasheets-for-gutenberg"
+PLUGIN_NAME="datasheets-building-blocks"
 ZIP_NAME="${PLUGIN_NAME}.zip"
 
 echo "Building Gutenberg blocks..."
