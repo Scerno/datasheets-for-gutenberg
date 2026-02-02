@@ -137,6 +137,79 @@ function datasheets_for_gutenberg_get_field_value( $field_name, $post_id = 0 ) {
 }
 
 /**
+ * Normalize a field value into a string.
+ *
+ * @param mixed $value Field value.
+ * @return string
+ */
+function datasheets_for_gutenberg_normalize_value( $value ) {
+	if ( is_array( $value ) ) {
+		$value = implode( ', ', array_map( 'sanitize_text_field', $value ) );
+	}
+
+	if ( is_object( $value ) ) {
+		return '';
+	}
+
+	return (string) $value;
+}
+
+/**
+ * Evaluate a comparison against a value.
+ *
+ * @param mixed  $value Field value.
+ * @param string $condition Condition identifier.
+ * @param string $compare_value Value to compare against.
+ * @param string $match_type Match type (is/is_not).
+ * @return bool
+ */
+function datasheets_for_gutenberg_compare_condition( $value, $condition, $compare_value, $match_type ) {
+	$normalized_value   = datasheets_for_gutenberg_normalize_value( $value );
+	$normalized_compare = (string) $compare_value;
+
+	switch ( $condition ) {
+		case 'greater_than':
+			if ( is_numeric( $normalized_value ) && is_numeric( $normalized_compare ) ) {
+				$matches = (float) $normalized_value > (float) $normalized_compare;
+			} else {
+				$matches = strcmp( $normalized_value, $normalized_compare ) > 0;
+			}
+			break;
+		case 'less_than':
+			if ( is_numeric( $normalized_value ) && is_numeric( $normalized_compare ) ) {
+				$matches = (float) $normalized_value < (float) $normalized_compare;
+			} else {
+				$matches = strcmp( $normalized_value, $normalized_compare ) < 0;
+			}
+			break;
+		case 'starts_with':
+			$matches = $normalized_compare !== '' && 0 === stripos( $normalized_value, $normalized_compare );
+			break;
+		case 'ends_with':
+			$matches = false;
+			if ( '' !== $normalized_compare ) {
+				$lower_value   = strtolower( $normalized_value );
+				$lower_compare = strtolower( $normalized_compare );
+				$matches       = substr( $lower_value, -strlen( $lower_compare ) ) === $lower_compare;
+			}
+			break;
+		case 'contains':
+			$matches = $normalized_compare !== '' && false !== stripos( $normalized_value, $normalized_compare );
+			break;
+		case 'equals':
+		default:
+			$matches = $normalized_value === $normalized_compare;
+			break;
+	}
+
+	if ( 'is_not' === $match_type ) {
+		return ! $matches;
+	}
+
+	return $matches;
+}
+
+/**
  * Register the REST route for field options.
  */
 function datasheets_for_gutenberg_register_field_route() {

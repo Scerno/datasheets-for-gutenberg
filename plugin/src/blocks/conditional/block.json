@@ -1,0 +1,35 @@
+{
+  "apiVersion": 2,
+  "name": "datasheets/conditional",
+  "title": "Datasheet Conditional",
+  "category": "layout",
+  "icon": "visibility",
+  "description": "Show inner blocks only when a field matches a condition.",
+  "supports": {
+    "html": false,
+    "innerBlocks": true
+  },
+  "attributes": {
+    "fieldName": {
+      "type": "string",
+      "default": ""
+    },
+    "condition": {
+      "type": "string",
+      "default": "equals"
+    },
+    "matchType": {
+      "type": "string",
+      "default": "is"
+    },
+    "compareValue": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./edit.js",
+  "script": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "viewStyle": "file:./style-index.css",
+  "render": "file:./render.php"
+}
