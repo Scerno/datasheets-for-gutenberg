@@ -1,0 +1,26 @@
+{
+  "apiVersion": 2,
+  "name": "datasheets/qr-code",
+  "title": "Datasheet QR Code",
+  "category": "widgets",
+  "icon": "grid-view",
+  "description": "Template-aware QR code that pulls from an ACF field.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "fieldName": {
+      "type": "string",
+      "default": ""
+    },
+    "fallbackValue": {
+      "type": "string",
+      "default": "https://example.com"
+    }
+  },
+  "editorScript": "file:./edit.js",
+  "script": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "viewStyle": "file:./style-index.css",
+  "render": "file:./render.php"
+}

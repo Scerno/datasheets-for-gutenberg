@@ -1,0 +1,26 @@
+{
+  "apiVersion": 2,
+  "name": "datasheets/list",
+  "title": "Datasheet List",
+  "category": "widgets",
+  "icon": "editor-ul",
+  "description": "Template-aware list that pulls from an ACF field.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "fieldName": {
+      "type": "string",
+      "default": ""
+    },
+    "fallbackItems": {
+      "type": "string",
+      "default": "Item one\nItem two\nItem three"
+    }
+  },
+  "editorScript": "file:./edit.js",
+  "script": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "viewStyle": "file:./style-index.css",
+  "render": "file:./render.php"
+}

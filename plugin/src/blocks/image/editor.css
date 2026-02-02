@@ -1,0 +1,28 @@
+.datasheets-image {
+	border: 1px dashed #b0b0b0;
+	padding: 12px;
+	background: #fff;
+}
+
+.datasheets-image__label {
+	display: block;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: #6b6b6b;
+}
+
+.datasheets-image__preview {
+	margin-top: 8px;
+	max-width: 100%;
+	height: auto;
+	border-radius: 4px;
+}
+
+.datasheets-image__placeholder {
+	margin-top: 8px;
+	padding: 24px;
+	background: #f5f5f5;
+	text-align: center;
+	color: #6b6b6b;
+}
