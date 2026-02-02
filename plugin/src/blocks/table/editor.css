@@ -1,0 +1,27 @@
+.datasheets-table {
+	border: 1px dashed #b0b0b0;
+	padding: 12px;
+	background: #fff;
+}
+
+.datasheets-table__label {
+	display: block;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: #6b6b6b;
+}
+
+.datasheets-table__preview {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 8px;
+}
+
+.datasheets-table__preview th,
+.datasheets-table__preview td {
+	border: 1px solid #d0d0d0;
+	padding: 6px;
+	text-align: left;
+	font-size: 12px;
+}

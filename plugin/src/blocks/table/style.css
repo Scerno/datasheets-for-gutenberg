@@ -1,0 +1,20 @@
+.datasheets-table__label {
+	display: block;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: #6b6b6b;
+}
+
+.datasheets-table__table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 6px;
+}
+
+.datasheets-table__table th,
+.datasheets-table__table td {
+	border: 1px solid #d0d0d0;
+	padding: 6px;
+	text-align: left;
+}
