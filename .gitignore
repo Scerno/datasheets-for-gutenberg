@@ -1,3 +1,12 @@
+#AppleDouble files
+._*
+.DS_Store
+.AppleDouble
+.AppleDB
+Thumbs.db
+._*
+
+
 # Logs
 logs
 *.log
