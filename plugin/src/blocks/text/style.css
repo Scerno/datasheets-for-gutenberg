@@ -1,0 +1,15 @@
+.datasheets-text {
+	margin: 0;
+}
+
+.datasheets-text__label {
+	display: block;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: #6b6b6b;
+}
+
+.datasheets-text__value {
+	margin: 6px 0 0;
+}
